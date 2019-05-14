@@ -13,43 +13,44 @@ class App extends Component {
 			data: JSON.parse(JSON.stringify(SUGGESTIONS)),
 			suggestions: JSON.parse(JSON.stringify(SUGGESTIONS)),
 			selectedSuggestion: 0,
-			values: "",
+			value: "",
 			filterValue: ""
 		}
 	}
 
 	onChange = (event) => {
 		event.persist();
-		let { values } = this.state;
 		let value = event.target.value;
 		
 		this.setState({
-			values: value
+			value
 		})
 		console.log(event);
 	}
 
 	onKeyUp = (event) => {
 		event.persist();
-		let { suggestions, selectedSuggestion, filterValue, values, data } = this.state;
-		let value = event.target.value, code = event.which, key = event.key;
-		let inEle = document.getElementById("test");
+		let { suggestions, selectedSuggestion, filterValue, value, data, isOpen } = this.state;
+		let val = event.target.value, code = event.which, key = event.key;
+		let inputElement = document.getElementById("test");
 
 		if (code === 13) {
 			
-			let pos = this.getCaretPosition(inEle);
+			let pos = this.getCaretPosition(inputElement);
 			var fIndex = pos - filterValue.length;
-
-			value = value.substring(0, fIndex) + suggestions[selectedSuggestion].value_show + value.substring(pos);
+			console.log(pos, fIndex);
+			value = val.substring(0, fIndex) + suggestions[selectedSuggestion].value_show + val.substring(pos);
 			filterValue = "";
-			values = value;
+			isOpen = false;
+			selectedSuggestion = 0;
 			event.preventDefault();
 			console.log(pos);
 
 		}
-		else if (key === 8) {
+		else if (code === 8) {
 			filterValue = filterValue.slice(0, filterValue.length - 1);
 			suggestions = data.filter(item => item.function_name.toLowerCase().includes(filterValue.toLowerCase()));
+			console.log("SPLICE", filterValue);
 		} 
 		else if ((code >= 65 && code <= 90) || (code >= 97 && code <= 122)) {
 
@@ -60,15 +61,24 @@ class App extends Component {
 			selectedSuggestion--;
 		} else if (code === 40 && (selectedSuggestion + 1) < suggestions.length) {
 			selectedSuggestion++;
+		}else if (this.specialChars(key)){
+			filterValue = "";
+			isOpen = false;
 		}
 
 		this.setState({
 			filterValue,
 			suggestions,
-			values,
-			selectedSuggestion
+			value,
+			selectedSuggestion,
+			isOpen
 		})
-		console.log(event, value);
+
+		console.log(filterValue,
+			// suggestions,
+			value,
+			selectedSuggestion)
+		// console.log(event, value);
 	}
 
 	getCaretPosition(oField) {
@@ -86,11 +96,26 @@ class App extends Component {
 		console.log(suggestion);
 	}
 
+	specialChars(val) {
+		return /^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/.test(val);
+	}
+
+	onKeyDown(event) {
+		let code = event.which;
+		if(code === 38 || code === 40){
+			event.preventDefault();
+		}
+	}
+
 	render() {
 		let openSuggestions = this.state.filterValue.trim();
 		return (
 			<div className="typeahead">
-				<input id="test" onKeyUp={this.onKeyUp} onChange={this.onChange} value={this.state.values} />
+				<input id="test" 
+					onKeyUp={this.onKeyUp}
+					onKeyDown={this.onKeyDown} 
+					onChange={this.onChange} 
+					value={this.state.value} />
 				{
 					openSuggestions ?
 						<ul>
