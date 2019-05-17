@@ -16,15 +16,16 @@ class App extends Component {
 			filterValue: ""
 		}
 	}
-
+	
 	onChange = (event) => {
 		event.persist();
 		let value = event.target.value;
-		
 		this.setState({
 			value
 		})
 	}
+
+
 
 	onKeyUp = (event) => {
 		event.persist();
@@ -38,7 +39,7 @@ class App extends Component {
 			var fIndex = pos - filterValue.length;
 			value = val.substring(0, fIndex) + suggestions[selectedSuggestion].value_show + val.substring(pos);
 			filterValue = "";
-			isOpen = false;
+			// isOpen = false;
 			selectedSuggestion = 0;
 			event.preventDefault();
 
@@ -58,7 +59,7 @@ class App extends Component {
 			selectedSuggestion++;
 		}else if (this.specialChars(key)){
 			filterValue = "";
-			isOpen = false;
+			// isOpen = false;
 		}
 
 		this.setState({
@@ -66,7 +67,7 @@ class App extends Component {
 			suggestions,
 			value,
 			selectedSuggestion,
-			isOpen
+			// isOpen
 		})
 
 	}
@@ -98,12 +99,14 @@ class App extends Component {
 		return (
 			<div className="typeahead">
 				<input id="test" 
+					onBlur={() => { this.setState({ isOpen: false }) }}
+					onFocus={() => { this.setState({ isOpen: true }) }}
 					onKeyUp={this.onKeyUp}
 					onKeyDown={this.onKeyDown} 
 					onChange={this.onChange} 
 					value={this.state.value} />
 				{
-					openSuggestions ?
+					openSuggestions && this.state.isOpen ?
 						<ul>
 							{
 
