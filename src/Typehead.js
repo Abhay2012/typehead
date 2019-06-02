@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import "./Typehead.css";
 
+/**
+ * @description Typehead Component
+ * It takes following props
+ * @param id - will be used for typehead input field
+ * @param suggestions - will be list of suggestions
+ * @param getInputValue - function which will get called on onBlur event for typehead input with input field value
+ */
 class Typehead extends Component {
 
 	constructor(props) {
@@ -41,6 +48,7 @@ class Typehead extends Component {
 		event.persist();
 		let { suggestions, selectedSuggestion, filterValue, value, data } = this.state;
 		let code = event.which, key = event.key;
+		const listItems = document.getElementsByClassName("typehead-suggestions-item");
 
 		// if enter key is pressed
 		if (code === 13) {
@@ -58,9 +66,11 @@ class Typehead extends Component {
 		}
 		else if (code === 38 && selectedSuggestion > 0) { // Up key is Pressed and selected suggestion is not first suggestion from suggestions list
 			selectedSuggestion--; // update selectedSuggestion
+			listItems[selectedSuggestion].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
 		}
 		else if (code === 40 && (selectedSuggestion + 1) < suggestions.length) { // Down key is Pressed
 			selectedSuggestion++;
+			listItems[selectedSuggestion].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
 		}
 		else if (this.specialChars(key)) { // in case any special key pressed
 			filterValue = "";
@@ -165,8 +175,10 @@ class Typehead extends Component {
 	render() {
 		let showSuggestions = this.state.filterValue.trim() && this.state.isOpen;
 		return (
-			<div id={`container-${this.props.id}`}>
-				<input id={this.props.id}
+			<div id={`container-${this.props.id}`} className="typehead-container">
+				<input 
+					className="typehead-input"
+					id={this.props.id}
 					onFocus={(ev) => { this.setState({ isOpen: true }); }}
 					onBlur={() => { this.props.getInputValue(this.state.value) }}
 					onKeyUp={this.onKeyUp}
@@ -175,14 +187,14 @@ class Typehead extends Component {
 					value={this.state.value} />
 				{
 					showSuggestions ?
-						<ul>
+						<ul className="typehead-suggestions">
 							{
 
 								this.state.suggestions.map((item, index) => {
 									return (
 										<li key={index}
 											onClick={this.onListItemClick.bind(this, index)}
-											className={index === this.state.selectedSuggestion ? "selected" : ""}>
+											className={`typehead-suggestions-item ${index === this.state.selectedSuggestion ? "selected" : ""}`}>
 											{item.function_name}
 										</li>
 									)

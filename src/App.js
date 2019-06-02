@@ -17,7 +17,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className="app">
-				<h1>Typehead</h1>
+				<h1 style={{textAlign: "center"}}>Typehead</h1>
 				<Typehead id="custom-typehead" suggestions={SUGGESTIONS} getInputValue={this.getInputValue} />
 			</div>
 		);
