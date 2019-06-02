@@ -18,7 +18,10 @@ class App extends Component {
 		return (
 			<div className="app">
 				<h1 style={{textAlign: "center"}}>Typehead</h1>
-				<Typehead id="custom-typehead" suggestions={SUGGESTIONS} getInputValue={this.getInputValue} />
+				<Typehead id="custom-typehead" 
+					suggestions={SUGGESTIONS} 
+					placeholder="Enter Input"
+					getInputValue={this.getInputValue} />
 			</div>
 		);
 	}

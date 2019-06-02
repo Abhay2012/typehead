@@ -4,8 +4,9 @@ import "./Typehead.css";
 /**
  * @description Typehead Component
  * It takes following props
- * @param id - will be used for typehead input field
- * @param suggestions - will be list of suggestions
+ * @param id - id for typehead input field
+ * @param placeholder - placeholder for input field
+ * @param suggestions - list of suggestions, with each suggestion of type {function_name: "", value_show: ""}
  * @param getInputValue - function which will get called on onBlur event for typehead input with input field value
  */
 class Typehead extends Component {
@@ -49,6 +50,10 @@ class Typehead extends Component {
 		let { suggestions, selectedSuggestion, filterValue, value, data } = this.state;
 		let code = event.which, key = event.key;
 		const listItems = document.getElementsByClassName("typehead-suggestions-item");
+
+		if(data.length < 1){
+			return;
+		}
 
 		// if enter key is pressed
 		if (code === 13) {
@@ -177,6 +182,7 @@ class Typehead extends Component {
 		return (
 			<div id={`container-${this.props.id}`} className="typehead-container">
 				<input 
+					placeholder={this.props.placeholder}
 					className="typehead-input"
 					id={this.props.id}
 					onFocus={(ev) => { this.setState({ isOpen: true }); }}
@@ -199,6 +205,12 @@ class Typehead extends Component {
 										</li>
 									)
 								})
+							}
+							{
+								showSuggestions && this.state.suggestions.length == 0 ?
+								<li className="typehead-suggestions-item">
+									no suggestion available
+								</li>: null
 							}
 						</ul> : null
 				}
