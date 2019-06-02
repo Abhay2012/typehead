@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-
-const SUGGESTIONS = [{ "value_show": "open", "function_name": "open" }, { "value_show": "high", "function_name": "high" }, { "value_show": "close", "function_name": "close" }, { "value_show": "low", "function_name": "low" }, { "value_show": "volume", "function_name": "volume" }, { "value_show": "sma(,)", "function_name": "simple moving average" }, { "value_show": "bb(,)", "function_name": "bollinger band" }, { "value_show": "macd( )", "function_name": "moving average convergence divergence" }, { "value_show": "ema( , )", "function_name": "exponential moving average" }, { "value_show": "rsi( )", "function_name": "relative strength index" }, { "value_show": "sum( , )", "function_name": "sum" }, { "value_show": "mean( , )", "function_name": "mean" }, { "value_show": "median( , )", "function_name": "median" }, { "value_show": "mode( , )", "function_name": "mode" }, { "value_show": "min( , )", "function_name": "minimum" }, { "value_show": "max( , )", "function_name": "maximum" }, { "value_show": "std( , )", "function_name": "standard deviation" }, { "value_show": "skew( , )", "function_name": "skewness" }, { "value_show": "kurt( , )", "function_name": "kurtosis" }, { "value_show": "rank( , )", "function_name": "rank" }, { "value_show": "cov( , , )", "function_name": "covariance" }, { "value_show": "corr( , ,)", "function_name": "correlation" }, { "value_show": "scale( , )", "function_name": "scale" }, { "value_show": "autocorr( , , )", "function_name": "autocorrelation" }, { "value_show": "buy_price", "function_name": "buy_price" }, { "value_show": "current_price", "function_name": "current_price" }, { "value_show": "trading_cost", "function_name": "trading_cost" }, { "value_show": "diff( , )", "function_name": "difference" }, { "value_show": "delay( , )", "function_name": "delay" }, { "value_show": "cwh( , , )", "function_name": "cup with handle indicator" }, { "value_show": "dtr( , , , )", "function_name": "double top reversal" }, { "value_show": "dbr( , , , )", "function_name": "double bottom reversal" }, { "value_show": "rb( , )", "function_name": "rounding bottom indicator" }, { "value_show": "rw( , )", "function_name": "rising wedge indicator" }, { "value_show": "fw( , )", "function_name": "falling wedge indicator" }, { "value_show": "a_triangle( , )", "function_name": "ascending triangle indicator" }, { "value_show": "ipc( , )", "function_name": "increasing price channel" }, { "value_show": "dist_mean( , )", "function_name": "distance from mean" }, { "value_show": "norm_probability( , )", "function_name": "normal distributed function" }, { "value_show": "hurst( , )", "function_name": "hurst factor" }, { "value_show": "dpc( , )", "function_name": "decreasing price channel indicator" }, { "value_show": "vwap( )", "function_name": "volume weighted moving average" }, { "value_show": "tr()", "function_name": "true range indicator" }, { "value_show": "atr()", "function_name": "average true range indicator" }, { "value_show": "average_movement( , )", "function_name": "average movement indicator" }, { "value_show": "emv( )", "function_name": "ease of movement indicator" }, { "value_show": "force( )", "function_name": "force index indicator" }, { "value_show": "mfi( )", "function_name": "money flow index indicator" }, { "value_show": "obv( )", "function_name": "on balance volume indicator" }, { "value_show": "roc( , )", "function_name": "rate of change" }, { "value_show": "aaron_up( , )", "function_name": "aaron up indicator" }, { "value_show": "aaron_down( , )", "function_name": "aaron down indicator" }, { "value_show": "hist_profit()", "function_name": "profitability %" }, { "value_show": "pivot()", "function_name": "pivot" }, { "value_show": "support_first()", "function_name": "support_first" }, { "value_show": "support_second()", "function_name": "support_second" }, { "value_show": "support_third()", "function_name": "support_third" }, { "value_show": "resistance_first()", "function_name": "resistance_first" }, { "value_show": "resistance_second()", "function_name": "resistance_second" }, { "value_show": "resistance_third()", "function_name": "resistance_third" }, { "value_show": "get_value(,)", "function_name": "get_value" }, { "value_show": "open", "function_name": "open price" }, { "value_show": "sma(,)", "function_name": "sma" }, { "value_show": "bb(,)", "function_name": "bb" }, { "value_show": "macd()", "function_name": "macd" }, { "value_show": "ema(,)", "function_name": "ema" }, { "value_show": "rsi()", "function_name": "rsi" }, { "value_show": "std(,)", "function_name": "std" }, { "value_show": "cwh( , , )", "function_name": "cwh" }, { "value_show": "dtr( , , , )", "function_name": "dtr" }, { "value_show": "dist_mean(,)", "function_name": "dist_mean" }, { "value_show": "roc(,)", "function_name": "roc" }, { "value_show": "obv()", "function_name": "obv" }, { "value_show": "aaron_down(,)", "function_name": "aaron_down" }, { "value_show": "aaron_up(,)", "function_name": "aaron_up" }, { "value_show": "hist_profit()", "function_name": "hist_profit" }, { "value_show": "mfi()", "function_name": "mfi" }, { "value_show": "emv()", "function_name": "emv" }, { "value_show": "average_movement(,)", "function_name": "average_movement" }, { "value_show": "atr()", "function_name": "atr" }, { "value_show": "tr()", "function_name": "tr" }, { "value_show": "vwap()", "function_name": "vwap" }, { "value_show": "stoc_kd(n1)", "function_name": "stoc_kd" }, { "value_show": "dbr( , , , )", "function_name": "dbr" }, { "value_show": "rb( , )", "function_name": "rb" }, { "value_show": "rw( , )", "function_name": "rw" }, { "value_show": "fw( , )", "function_name": "fw" }, { "value_show": "a_triangle( , )", "function_name": "a_triangle" }, { "value_show": "ipc( , )", "function_name": "ipc" }, { "value_show": "dpc( , )", "function_name": "dpc" }, { "value_show": "conversion_line()", "function_name": "conversion_line" }, { "value_show": "base_line()", "function_name": "base_line" }, { "value_show": "leading_span_a()", "function_name": "leading_span_a" }, { "value_show": "leading_span_b()", "function_name": "leading_span_b" }, { "value_show": "lagging_span()", "function_name": "lagging_span" }, { "value_show": "ichimoku_long()", "function_name": "ichimoku_long" }, { "value_show": "ichimoku_short()", "function_name": "ichimoku_short" }, { "value_show": "ft_max(, ,)", "function_name": "ft_max" }, { "value_show": "ft_min(, ,)", "function_name": "ft_min" }, { "value_show": "cci()", "function_name": "cci" }, { "value_show": "supertrend(mul, n)", "function_name": "supertrend" }, { "value_show": "dema(,)", "function_name": "dema" }, { "value_show": "day_open()", "function_name": "day_open" }, { "value_show": "day_close()", "function_name": "day_close" }, { "value_show": "day_high()", "function_name": "day_high" }, { "value_show": "day_low()", "function_name": "day_low" }, { "value_show": "day_volume()", "function_name": "day_volume" }, { "value_show": "open_interest", "function_name": "open_interest" }];
+import "./Typehead.css";
 
 class Typehead extends Component {
 
@@ -8,14 +7,27 @@ class Typehead extends Component {
 		super(props);
 		this.state = {
 			isOpen: false,
-			data: JSON.parse(JSON.stringify(SUGGESTIONS)),
-			suggestions: JSON.parse(JSON.stringify(SUGGESTIONS)),
+			data: JSON.parse(JSON.stringify(this.props.suggestions)), // to get copy of suggestions
+			suggestions: JSON.parse(JSON.stringify(this.props.suggestions)),
 			selectedSuggestion: 0,
 			value: "",
 			filterValue: ""
 		}
 	}
-	
+
+	componentDidMount() {
+		// to hide suggestions on clicking outside typehead container
+		document.getElementsByTagName("body")[0].addEventListener("click", (ev) => {
+			const container = document.getElementById(`container-${this.props.id}`);
+			if (!container.contains(ev.target)) {
+				this.setState({
+					isOpen: false
+				});
+			}
+		})
+	}
+
+	// onChange handler for typehead input
 	onChange = (event) => {
 		event.persist();
 		let value = event.target.value;
@@ -24,53 +36,90 @@ class Typehead extends Component {
 		})
 	}
 
-
-
+	// on keyup event handler of typehead input
 	onKeyUp = (event) => {
 		event.persist();
-		let { suggestions, selectedSuggestion, filterValue, value, data, isOpen } = this.state;
-		let val = event.target.value, code = event.which, key = event.key;
-		let inputElement = document.getElementById(`${this.props.id}`);
-		
+		let { suggestions, selectedSuggestion, filterValue, value, data } = this.state;
+		let code = event.which, key = event.key;
+
+		// if enter key is pressed
 		if (code === 13) {
-			
-			let pos = this.getCaretPosition(inputElement);
-			var fIndex = pos - filterValue.length;
-			value = val.substring(0, fIndex) + suggestions[selectedSuggestion].value_show + val.substring(pos);
-			filterValue = "";
-			// isOpen = false;
-			selectedSuggestion = 0;
-			event.preventDefault();
-
+			this.selectOption(); // Add Selected Suggestion value to the input field
+			event.preventDefault(); // Prevent onChange Event
+			return;
 		}
-		else if (code === 8) {
-			filterValue = filterValue.slice(0, filterValue.length - 1);
-			suggestions = data.filter(item => item.function_name.toLowerCase().includes(filterValue.toLowerCase()));
-		} 
-		else if ((code >= 65 && code <= 90)) {
-
-			filterValue += key;
-			suggestions = data.filter(item => item.function_name.toLowerCase().includes(filterValue.toLowerCase()));
-		
-		} else if (code === 38 && selectedSuggestion > 0) {
-			selectedSuggestion--;
-		} else if (code === 40 && (selectedSuggestion + 1) < suggestions.length) {
+		else if (code === 8) { // if backspace key is clicked
+			filterValue = filterValue.slice(0, filterValue.length - 1); // update filterValue
+			suggestions = this.filterSuggestions(data, filterValue); // update suggestions list
+		}
+		else if ((code >= 65 && code <= 90)) { // if any alphabet key is pressed
+			filterValue += key; // update filter value
+			suggestions = this.filterSuggestions(data, filterValue); //update suggestions list
+		}
+		else if (code === 38 && selectedSuggestion > 0) { // Up key is Pressed and selected suggestion is not first suggestion from suggestions list
+			selectedSuggestion--; // update selectedSuggestion
+		}
+		else if (code === 40 && (selectedSuggestion + 1) < suggestions.length) { // Down key is Pressed
 			selectedSuggestion++;
-		}else if (this.specialChars(key)){
-			filterValue = "";
-			// isOpen = false;
 		}
-
+		else if (this.specialChars(key)) { // in case any special key pressed
+			filterValue = "";
+		}
 		this.setState({
 			filterValue,
 			suggestions,
 			value,
 			selectedSuggestion,
-			// isOpen
-		})
+		});
+	}
+
+	// to filter suggestions list as per filter value
+	filterSuggestions(suggestion, filterValue) {
+		return suggestion.filter(item => item.function_name.toLowerCase().includes(filterValue.toLowerCase()));
+	}
+
+	// to replace filter value with selectedOption value from the input field
+	selectOption(cb) {
+		let { suggestions, selectedSuggestion, filterValue, value } = this.state;
+		let inputElement = document.getElementById(`${this.props.id}`);
+		let val = inputElement.value;
+		let pos = this.getCaretPosition(inputElement);
+		var fIndex = pos - filterValue.length;
+		value = val.substring(0, fIndex) + suggestions[selectedSuggestion].value_show + val.substring(pos);
+		filterValue = "";
+		selectedSuggestion = 0;
+		this.setState({
+			filterValue,
+			suggestions,
+			value,
+			selectedSuggestion
+		}, () => {
+			if (cb) { // if callback provided call it after render
+				cb();
+			}
+		});
 
 	}
 
+	// on click on list item of suggestions
+	onListItemClick(index) {
+		let inputElement = document.getElementById(`${this.props.id}`);
+		let pos = this.getCaretPosition(inputElement);
+		this.setState({
+			selectedSuggestion: index
+		}, () => {
+			const newPos = this.getNewPosition(index, pos);
+			this.selectOption(this.setCaretPosition.bind(this, inputElement, newPos));
+		});
+	}
+
+	// to get new value for carot
+	getNewPosition(index, currentPos){
+		const item = this.state.suggestions[index];
+		return currentPos - this.state.filterValue.length + item.value_show.length;
+	}
+
+	// to get caret position from the input field
 	getCaretPosition(oField) {
 		var iCaretPos = 0;
 		if (document.selection) {
@@ -82,37 +131,58 @@ class Typehead extends Component {
 		return iCaretPos;
 	}
 
+	// to set caret position
+	setCaretPosition(elem, caretPos) {
+		if (elem != null) {
+			if (elem.createTextRange) {
+				var range = elem.createTextRange();
+				range.move('character', caretPos);
+				range.select();
+			}
+			else {
+				if (elem.selectionStart) {
+					elem.focus();
+					elem.setSelectionRange(caretPos, caretPos);
+				}
+				else
+					elem.focus();
+			}
+		}
+	}
+
 	specialChars(val) {
 		return /^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/.test(val);
 	}
 
+	// key down event handler
 	onKeyDown(event) {
 		let code = event.which;
-		if(code === 38 || code === 40){
+		if (code === 38 || code === 40) { // to prevent up down Keys default action of moving caret in begining and end of input field
 			event.preventDefault();
 		}
 	}
 
 	render() {
-		let openSuggestions = this.state.filterValue.trim();
+		let showSuggestions = this.state.filterValue.trim() && this.state.isOpen;
 		return (
-			<div className="typeahead">
-				<input id={this.props.id} 
-					onBlur={() => { this.setState({ isOpen: false }) }}
-					onFocus={() => { this.setState({ isOpen: true }) }}
+			<div id={`container-${this.props.id}`}>
+				<input id={this.props.id}
+					onFocus={(ev) => { this.setState({ isOpen: true }); }}
+					onBlur={() => { this.props.getInputValue(this.state.value) }}
 					onKeyUp={this.onKeyUp}
-					onKeyDown={this.onKeyDown} 
-					onChange={this.onChange} 
+					onKeyDown={this.onKeyDown}
+					onChange={this.onChange}
 					value={this.state.value} />
 				{
-					openSuggestions && this.state.isOpen ?
+					showSuggestions ?
 						<ul>
 							{
 
 								this.state.suggestions.map((item, index) => {
 									return (
-										<li key = {index}
-										className={index === this.state.selectedSuggestion ? "selected" : ""}>
+										<li key={index}
+											onClick={this.onListItemClick.bind(this, index)}
+											className={index === this.state.selectedSuggestion ? "selected" : ""}>
 											{item.function_name}
 										</li>
 									)

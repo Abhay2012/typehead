@@ -1,0 +1,13 @@
+.selected{
+    color: blue;
+}
+
+.typehead-container{
+    text-align: center;
+}
+
+.typehead-input{
+    width: 60%;
+    height: 30px;
+}
+
