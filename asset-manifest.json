@@ -1,13 +1,13 @@
 {
-  "main.css": "/Abhay2012/typehead/static/css/main.de61b60d.chunk.css",
-  "main.js": "/Abhay2012/typehead/static/js/main.2186962c.chunk.js",
-  "main.js.map": "/Abhay2012/typehead/static/js/main.2186962c.chunk.js.map",
-  "runtime~main.js": "/Abhay2012/typehead/static/js/runtime~main.23d83646.js",
-  "runtime~main.js.map": "/Abhay2012/typehead/static/js/runtime~main.23d83646.js.map",
-  "static/js/2.d6a534e5.chunk.js": "/Abhay2012/typehead/static/js/2.d6a534e5.chunk.js",
-  "static/js/2.d6a534e5.chunk.js.map": "/Abhay2012/typehead/static/js/2.d6a534e5.chunk.js.map",
-  "index.html": "/Abhay2012/typehead/index.html",
-  "precache-manifest.24e564f3962d8d9ac2b4c7d47564ec5e.js": "/Abhay2012/typehead/precache-manifest.24e564f3962d8d9ac2b4c7d47564ec5e.js",
-  "service-worker.js": "/Abhay2012/typehead/service-worker.js",
-  "static/css/main.de61b60d.chunk.css.map": "/Abhay2012/typehead/static/css/main.de61b60d.chunk.css.map"
+  "main.css": "/typehead/static/css/main.de61b60d.chunk.css",
+  "main.js": "/typehead/static/js/main.5f52b7fd.chunk.js",
+  "main.js.map": "/typehead/static/js/main.5f52b7fd.chunk.js.map",
+  "runtime~main.js": "/typehead/static/js/runtime~main.2f716018.js",
+  "runtime~main.js.map": "/typehead/static/js/runtime~main.2f716018.js.map",
+  "static/js/2.d6a534e5.chunk.js": "/typehead/static/js/2.d6a534e5.chunk.js",
+  "static/js/2.d6a534e5.chunk.js.map": "/typehead/static/js/2.d6a534e5.chunk.js.map",
+  "index.html": "/typehead/index.html",
+  "precache-manifest.c44febee236b8b7a47de8c0eddef031e.js": "/typehead/precache-manifest.c44febee236b8b7a47de8c0eddef031e.js",
+  "service-worker.js": "/typehead/service-worker.js",
+  "static/css/main.de61b60d.chunk.css.map": "/typehead/static/css/main.de61b60d.chunk.css.map"
 }
